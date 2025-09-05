@@ -1,0 +1,109 @@
+.chats-container {
+  display: flex;
+  flex-direction: row;
+  height: 100%;
+  margin: 0;
+  gap: clamp(0.5rem, 1vw, 1rem);
+  padding: clamp(0.5rem, 1vw, 1rem);
+  min-height: 0;
+  overflow: hidden;
+}
+
+.chatBox {
+  background-color: #2b2b2b;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  border-radius:.6vw;
+  flex: 1;
+  min-width: 0; /* Allows flex item to shrink below content size */
+  min-height: 0;
+  overflow: hidden;
+}
+
+/* @media (max-width: 750px) {
+  .chatBox {
+    display: none;
+  }
+
+  .MsgBox {
+    flex-grow: 1;
+  }
+} */
+
+.MsgBox {
+  display: flex;
+  flex-direction: column;
+  align-items: start;
+  color: white;
+  width: 25vw;
+  min-width:0;
+  flex-shrink: 0;
+  overflow: hidden;
+}
+
+.mychats-header {
+  display: flex;
+  flex-direction: row;
+  width: 100%;
+  justify-content: space-between;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: clamp(0.5rem, 1vw, 1rem);
+}
+
+.mychats-header-btn-row{
+  display: flex;
+  flex-direction: row;
+  gap: clamp(0.25rem, 0.5vw, 0.5rem);
+  flex-wrap: wrap;
+}
+
+.mychats-header-btn-row>button{
+  background-color:#1f1f1fb3;
+  height: clamp(2rem, 4vh, 3rem);
+  width: clamp(2rem, 4vw, 3rem);
+  color: whitesmoke;
+  border-radius: clamp(0.5rem, 1vw, 1rem);
+  border: 0.1px solid #2b2b2b;
+  font-size: clamp(1rem, 1vw, 1.5rem);
+  min-width: 0;
+  flex-shrink: 0;
+}
+
+.mychats-header-btn-row>button:hover{
+  color: #4f52b2;
+  box-shadow: 2px 1px 6px rgb(79, 82, 178,.5);
+  transform: translateY(-1px) scale(1.01);
+}
+
+/* Container query approach for responsive behavior */
+.chats-container {
+  container-type: inline-size;
+}
+
+/* @container (max-width: 800px) {
+  .chats-container {
+    flex-direction: column;
+  }
+  
+  .chatBox {
+    min-height: 60vh;
+  }
+  
+  .MsgBox {
+    width: 100%;
+    min-width: 100%;
+  }
+}
+
+@container (max-width: 600px) {
+  .mychats-header {
+    flex-direction: column;
+    align-items: flex-start;
+  }
+  
+  .mychats-header-btn-row {
+    justify-content: flex-start;
+  }
+} */
