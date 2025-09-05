@@ -1,12 +1,49 @@
-# React + Vite
+# MS-Teams Clone
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+A Microsoft Teams–like web application built with **React + Vite** for seamless team collaboration.  
+It provides real-time chat, video meetings, calendar scheduling, and user authentication — all in one place.
 
-Currently, two official plugins are available:
+---
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Babel](https://babeljs.io/) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+## 🚀 Features
 
-## Expanding the ESLint configuration
+- 💬 **Real-time Chat System**
 
-If you are developing a production application, we recommend using TypeScript with type-aware lint rules enabled. Check out the [TS template](https://github.com/vitejs/vite/tree/main/packages/create-vite/template-react-ts) for information on how to integrate TypeScript and [`typescript-eslint`](https://typescript-eslint.io) in your project.
+  - One-to-one and group chats
+  - Chat history with options and previews
+  - Message bar with instant updates
+
+- 🎥 **Meetings**
+
+  - Create new meetings with unique links
+  - Join scheduled or instant meetings
+  - Meeting side cards for quick access
+
+- 📅 **Calendar Integration**
+
+  - Teams-style calendar with scheduled meetings
+  - Easy meeting management
+
+- 👤 **User Authentication**
+
+  - Sign up and login system
+  - User list and search functionality
+
+- 🖼️ **UI Components**
+  - Responsive navigation bar & sidebar
+  - Avatar support for users
+  - Modern Teams-like design
+
+---
+
+## 🛠️ Tech Stack
+
+- **Frontend**: React + Vite
+- **Styling**: CSS + custom components
+- **State Management**: React Context API
+- **Real-time Communication**: Socket.io
+- **Build Tools**: Vite + ESLint
+
+---
+
+## 📂 Project Structure
