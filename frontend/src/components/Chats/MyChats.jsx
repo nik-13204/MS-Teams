@@ -3,6 +3,7 @@ import ChatPreview from "./miscellaneous/ChatPreview";
 import { ChatState } from "../../context/ChatProvider";
 import axios from "axios";
 import { useNavigate } from "react-router-dom";
+import API_CONFIG from "../../config/api";
 import "./Chat.css";
 
 
@@ -19,7 +20,7 @@ function MyChats() {
           Authorization: `Bearer ${token}`,
         },
       };
-      const { data } = await axios.get("http://localhost:3001/chat", config);
+      const { data } = await axios.get(API_CONFIG.getFullUrl(API_CONFIG.ENDPOINTS.CHAT.GET_ALL), config);
       setChats(data);
       //console.log(data);
     } catch (err) {
@@ -29,8 +30,10 @@ function MyChats() {
 
   useEffect(() => {
     const userInfo = JSON.parse(localStorage.getItem("userInfo"));
-    setLoggedUser(userInfo);
-    fetchChat(userInfo.token);
+    if (userInfo) {
+      setLoggedUser(userInfo);
+      fetchChat(userInfo.token);
+    }
   }, []);
 
   return (
@@ -49,8 +52,8 @@ function MyChats() {
       <div>
           <small><p>&nbsp;Recent</p></small>
         </div>
-        {chats.map((chat) => {
-          const otherUser = chat.users.find(
+        {user && loggedUser && chats && chats.map((chat) => {
+          const otherUser = chat.users && chat.users.find(
             (u) => u._id.toString() !== loggedUser._id.toString()
           );
           return (

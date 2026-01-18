@@ -79,3 +79,31 @@
   overflow-y: auto;
   z-index: 1000;
 }
+
+.auth-btn {
+  padding: 0.4rem 0.8rem;
+  border-radius: 6px;
+  border: none;
+  cursor: pointer;
+  font-size: 0.9rem;
+  transition: background 0.2s ease;
+}
+
+.auth-btn.login {
+  background-color: #4caf50;
+  color: white;
+}
+
+.auth-btn.login:hover {
+  background-color: #43a047;
+}
+
+.auth-btn.logout {
+  background-color: #e53935;
+  color: white;
+}
+
+.auth-btn.logout:hover {
+  background-color: #d32f2f;
+}
+

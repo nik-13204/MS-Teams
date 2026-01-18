@@ -1,107 +1,105 @@
-import React, { useState, useEffect } from "react";
+import React, { useState, useEffect, useRef } from "react";
 import socket from "../../socket";
 import ChatHistory from "./miscellaneous/ChatHistory";
 import MessageBar from "./miscellaneous/MessageBar";
 import axios from "axios";
 import { ChatState } from "../../context/ChatProvider";
-import "./miscellaneous/ChatHistory.css";
+import API_CONFIG from "../../config/api";
 
 function ChatWindow() {
   const { user, selectedChat } = ChatState();
   const [messages, setMessages] = useState([]);
-  const [socketConnected, setSocketConnected] = useState(false);
-  const ENDPOINT = "http://localhost:3001";
-  let selectedChatCompare;
+  const selectedChatCompare = useRef(null);
 
-  //Fetches all the messages from a particular chat with the help of chat._id
-  const fetchMessage = async () => {
-    if (!selectedChat?._id) return;
-    try {
-      const config = {
-        headers: {
-          Authorization: `Bearer ${user?.token}`,
-        },
-      };
-      const { data } = await axios.get(
-        `http://localhost:3001/message/${selectedChat._id}`,
-        config
-      );
-      setMessages(data);
-      socket.emit("join chat", selectedChat._id);
-    } catch (err) {
-      console.log(err);
-    }
-  };
-
-  //To join user to a room with its user._id
+  /* ================= SOCKET SETUP ================= */
   useEffect(() => {
+    if (!user?._id) return;
+
     socket.emit("setup", user);
-    socket.on("connection", () => setSocketConnected(true));
-  }, []);
 
-  //Every time when a chat is selected we fetch message of that particular chat
-  useEffect(() => {
-    if (!selectedChat?._id) return;
-    fetchMessage();
-    selectedChatCompare = selectedChat;
-  }, [selectedChat]);
+    socket.on("connect", () => {
+      console.log("Socket connected");
+    });
 
-  //when a new message is recieved on socket add it to messages state
-  useEffect(() => {
-    socket.on("message recieved", (newMessageRecieved) => {
+    socket.on("message received", (newMessage) => {
       if (
-        !selectedChatCompare ||
-        selectedChatCompare._id !== newMessageRecieved.chat._id
+        selectedChatCompare.current &&
+        selectedChatCompare.current._id === newMessage.chat._id
       ) {
-        //give notification
-      } else {
-        //console.log(newMessageRecieved);
-        setMessages([...messages, newMessageRecieved]);       
+        setMessages((prev) => [...prev, newMessage]);
       }
     });
-  });
-  
-  //To send message and emit it to particular chat room
+
+    return () => {
+      socket.off("message received");
+    };
+  }, [user]);
+
+  /* ================= FETCH MESSAGES ================= */
+  useEffect(() => {
+    if (!selectedChat?._id) return;
+
+    selectedChatCompare.current = selectedChat;
+    socket.emit("join chat", selectedChat._id);
+
+    const fetchMessages = async () => {
+      try {
+        const { data } = await axios.get(
+          `${API_CONFIG.getFullUrl(API_CONFIG.ENDPOINTS.MESSAGE.GET)}/${selectedChat._id}`,
+          {
+            headers: {
+              Authorization: `Bearer ${user.token}`,
+            },
+          }
+        );
+        setMessages(data);
+      } catch (error) {
+        console.error(error);
+      }
+    };
+
+    fetchMessages();
+  }, [selectedChat]);
+
+  /* ================= SEND MESSAGE ================= */
   const handleSend = async (text) => {
-    if (!selectedChat || !selectedChat._id) {
-      console.log("No chat selected");
-      return;
-    }
+    if (!text.trim()) return;
 
     try {
-      const config = {
-        headers: {
-          "Content-Type": "application/json",
-          Authorization: `Bearer ${user.token}`,
-        },
-      };
-
       const { data } = await axios.post(
-        "http://localhost:3001/message",
+        API_CONFIG.getFullUrl(API_CONFIG.ENDPOINTS.MESSAGE.SEND),
         {
           content: text,
           chatId: selectedChat._id,
         },
-        config
+        {
+          headers: {
+            "Content-Type": "application/json",
+            Authorization: `Bearer ${user.token}`,
+          },
+        }
       );
+
       socket.emit("new message", data);
       setMessages((prev) => [...prev, data]);
-    } catch (err) {
-      console.error(err);
+    } catch (error) {
+      console.error(error);
     }
   };
+
+  /* ================= AUTO SCROLL ================= */
   useEffect(() => {
-  const chatHistory = document.querySelector(".chat-history");
-  if (chatHistory) {
-    chatHistory.scrollTop = chatHistory.scrollHeight;
-  }
-}, [messages]);
+    const chatHistory = document.querySelector(".chat-history");
+    if (chatHistory) {
+      chatHistory.scrollTop = chatHistory.scrollHeight;
+    }
+  }, [messages]);
 
   return (
     <div className="chat-window">
-      <ChatHistory messages={messages} />  
-      <MessageBar onSend={handleSend} />   
-    </div>                                 
+      <ChatHistory messages={messages} />
+      <MessageBar onSend={handleSend} />
+    </div>
   );
 }
 

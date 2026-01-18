@@ -36,8 +36,10 @@ function SideBar() {
         </div>
 
         <div style={{fontSize:"clamp(1rem, 1vw, 1.5rem)"}} className="sidebar-icons">
+          <Link to="http://localhost:5173/dashboard" className="sidebar-link">
           <i className="fa-solid fa-bell"></i>
           <p>Activity</p>
+          </Link>
         </div>
       </div>
         

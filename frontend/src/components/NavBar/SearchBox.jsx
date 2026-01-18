@@ -2,6 +2,7 @@ import React, { useState } from "react";
 import { ChatState } from "../../context/ChatProvider";
 import axios from "axios";
 import UserList from "./UserList";
+import API_CONFIG from "../../config/api";
 import "./NavBar.css";
 export default function SearchBox() {
   const [search, setSearch] = useState("");
@@ -21,7 +22,7 @@ export default function SearchBox() {
         },
       };
       const { data } = await axios.get(
-        `http://localhost:3001/user?search=${search}`,
+        `${API_CONFIG.getFullUrl(API_CONFIG.ENDPOINTS.USER.SEARCH)}?search=${search}`,
         config
       );
       setSearchResult(data);
@@ -42,7 +43,7 @@ export default function SearchBox() {
         },
       };
       const { data } = await axios.post(
-        `http://localhost:3001/chat`,
+        API_CONFIG.getFullUrl(API_CONFIG.ENDPOINTS.CHAT.CREATE),
         { userId },
         config
       );
