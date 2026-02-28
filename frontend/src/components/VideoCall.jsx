@@ -12,7 +12,7 @@ const VideoCall = () => {
     if (!meetingRef.current || !user || !roomId) return;
 
     // ⚠️ FOR TESTING ONLY — move token generation to backend for production
-    const appID = import.meta.env.VITE_ZEGO_APP_ID;
+    const appID = Number(import.meta.env.VITE_ZEGO_APP_ID);
     const serverSecret = import.meta.env.VITE_ZEGO_SERVER_SECRET;
 
     const kitToken = ZegoUIKitPrebuilt.generateKitTokenForTest(
