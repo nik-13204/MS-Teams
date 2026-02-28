@@ -66,7 +66,7 @@ export default function NewMeeting() {
       <div style={styles.card}>
         <h2 style={styles.heading}>New Meeting</h2>
         <form onSubmit={handleSubmit}>
-          <label htmlFor="title"><i class="fa-solid fa-pen"></i></label>&nbsp;
+          <label htmlFor="title"><i className="fa-solid fa-pen"></i></label>&nbsp;
           <input
             type="text"
             id="title"
@@ -78,7 +78,7 @@ export default function NewMeeting() {
             required
           />
           <br /><br />
-          <label><i class="fa-regular fa-clock"></i></label>&nbsp;
+          <label><i className="fa-regular fa-clock"></i></label>&nbsp;
           <input
             type="datetime-local"
             id="start"
@@ -89,7 +89,7 @@ export default function NewMeeting() {
             required
           />
           &nbsp;&nbsp;
-          <label><i class="fa-solid fa-arrow-right"></i></label>&nbsp;
+          <label><i className="fa-solid fa-arrow-right"></i></label>&nbsp;
           <input
             type="datetime-local"
             id="end"
@@ -100,7 +100,7 @@ export default function NewMeeting() {
             required
           />
           <br /><br />
-          <i class="fa-solid fa-align-right"></i>
+          <i className="fa-solid fa-align-right"></i>
           <br /><br />
           <textarea
             placeholder="Description"

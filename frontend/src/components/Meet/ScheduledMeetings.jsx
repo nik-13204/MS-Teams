@@ -9,7 +9,7 @@ export default function ScheduledMeetings() {
       <div style={{ display: "flex", justifyContent: "space-between" }}>
         <h3 style={{ fontSize: "1rem" }}>Scheduled meetings</h3>
         <Link to="http://localhost:5173/calendar"><p style={{color:"#d6d6d6",fontSize:".9rem"}}>
-          <i class="fa-solid fa-calendar-days">&nbsp;</i>View in calender</p>
+          <i className="fa-solid fa-calendar-days">&nbsp;</i>View in calender</p>
         </Link>
       </div>
       <div className="meet-card">

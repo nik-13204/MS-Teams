@@ -74,3 +74,30 @@
 .icon>i{
   font-size: clamp(0.75rem, 1.5vw, 1rem);
 }
+
+/* Back button for mobile */
+.back-btn-mobile {
+  display: none;
+  background: transparent;
+  border: none;
+  color: #7f85f5;
+  font-size: 1.5rem;
+  cursor: pointer;
+  padding: 0.5rem;
+  min-width: 44px;
+  min-height: 44px;
+  transition: color 0.2s ease;
+}
+
+.back-btn-mobile:hover {
+  color: white;
+}
+
+/* Show back button on tablet and mobile */
+@media (max-width: 1023px) {
+  .back-btn-mobile {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+}

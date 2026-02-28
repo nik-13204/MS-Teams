@@ -45,7 +45,9 @@ function ChatWindow() {
     const fetchMessages = async () => {
       try {
         const { data } = await axios.get(
-          `${API_CONFIG.getFullUrl(API_CONFIG.ENDPOINTS.MESSAGE.GET)}/${selectedChat._id}`,
+          `${API_CONFIG.getFullUrl(
+            API_CONFIG.ENDPOINTS.MESSAGE.GET
+          )}/${selectedChat._id}`,
           {
             headers: {
               Authorization: `Bearer ${user.token}`,
@@ -59,7 +61,7 @@ function ChatWindow() {
     };
 
     fetchMessages();
-  }, [selectedChat]);
+  }, [selectedChat, user.token]);
 
   /* ================= SEND MESSAGE ================= */
   const handleSend = async (text) => {
@@ -96,7 +98,7 @@ function ChatWindow() {
   }, [messages]);
 
   return (
-    <div className="chat-window">
+    <div className="chatBox">
       <ChatHistory messages={messages} />
       <MessageBar onSend={handleSend} />
     </div>

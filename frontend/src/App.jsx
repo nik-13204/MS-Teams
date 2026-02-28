@@ -19,7 +19,7 @@ const Meet = lazy(() => import("./pages/Meet"));
 const Login = lazy(() => import("./components/authentication/login"));
 const Signup = lazy(() => import("./components/authentication/SignUp"));
 const Dashboard = lazy(() => import("./pages/Dashboard"));
-
+const VideoCall = lazy(() => import("./components/VideoCall"));
 /* ---------- Layouts ---------- */
 
 const AppLayout = () => (
@@ -59,6 +59,14 @@ const AppLayout = () => (
               element={
                 <PrivateRoute>
                   <Meet />
+                </PrivateRoute>
+              }
+            />
+            <Route
+              path="/call/:roomId"
+              element={
+                <PrivateRoute>
+                  <VideoCall />
                 </PrivateRoute>
               }
             />

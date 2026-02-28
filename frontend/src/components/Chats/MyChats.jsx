@@ -7,7 +7,7 @@ import API_CONFIG from "../../config/api";
 import "./Chat.css";
 
 
-function MyChats() {
+function MyChats({ onChatSelect }) {
   const [loggedUser, setLoggedUser] = useState();
   const { selectedChat, setSelectedChat, user, chats, setChats } = ChatState();
   const navigate = useNavigate();
@@ -57,12 +57,13 @@ function MyChats() {
             (u) => u._id.toString() !== loggedUser._id.toString()
           );
           return (
-            <ChatPreview
-              key={chat._id}
-              otherUser={otherUser}
-              msg={chat.latestMessage}
-              chat={chat}
-            />
+            <div key={chat._id} onClick={() => onChatSelect && onChatSelect()}>
+              <ChatPreview
+                otherUser={otherUser}
+                msg={chat.latestMessage}
+                chat={chat}
+              />
+            </div>
           );
         })}
     </div>

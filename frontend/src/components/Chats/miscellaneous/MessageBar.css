@@ -6,7 +6,7 @@
   border-radius:.5vw;
   padding: clamp(0.5rem, 1vh, 1rem) clamp(0.75rem, 1.5vw, 1.5rem);
   color: white;
-  width: min(90%, 58vw);
+  width: clamp(90%,53vw,90%);
   margin: clamp(1vh, 2vh, 3vh) clamp(2vw, 3vw, 5vw);
   height: clamp(2rem, 4vh, 3rem);
   min-width: 0;

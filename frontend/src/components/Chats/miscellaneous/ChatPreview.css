@@ -1,5 +1,5 @@
 .ChatPreview{
-  width:25vw;
+  width:clamp(15rem, 100%, 100%);
   padding: 0 clamp(1rem, 2vw, 1.5rem);
   height: clamp(3rem, 10vh, 4rem);
   display: flex;

@@ -38,6 +38,30 @@ html, body {
   padding: 0 2rem;
 }
 
+/* Mobile Nav */
+@media (max-width: 768px) {
+  .landing-nav {
+    padding: 0.5rem 0;
+  }
+  
+  .nav-container {
+    padding: 0 1rem;
+    flex-wrap: wrap;
+  }
+  
+  .nav-logo {
+    font-size: 1.2rem;
+  }
+  
+  .logo-icon {
+    font-size: 1.5rem;
+  }
+  
+  .nav-links {
+    display: none;
+  }
+}
+
 .nav-logo {
   display: flex;
   align-items: center;
@@ -150,6 +174,26 @@ html, body {
   transform: translateZ(0);
 }
 
+/* Tablet Hero */
+@media (max-width: 1024px) {
+  .hero {
+    grid-template-columns: 1fr;
+    padding: 10rem 2rem 4rem;
+    gap: 2rem;
+    min-height: auto;
+  }
+}
+
+/* Mobile Hero */
+@media (max-width: 768px) {
+  .hero {
+    grid-template-columns: 1fr;
+    padding: 8rem 1rem 3rem;
+    gap: 2rem;
+    min-height: auto;
+  }
+}
+
 .hero-content {
   display: flex;
   flex-direction: column;
@@ -170,6 +214,16 @@ html, body {
   max-width: 500px;
 }
 
+@media (max-width: 768px) {
+  .hero-title {
+    font-size: clamp(1.8rem, 5vw, 2.5rem);
+  }
+  
+  .hero-subtitle {
+    font-size: 1rem;
+  }
+}
+
 .hero-buttons {
   display: flex;
   gap: 1rem;
@@ -181,6 +235,12 @@ html, body {
   position: relative;
   height: 400px;
   perspective: 1000px;
+}
+
+@media (max-width: 768px) {
+  .hero-visual {
+    height: 300px;
+  }
 }
 
 .floating-card {

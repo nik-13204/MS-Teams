@@ -32,7 +32,7 @@ function NavBar() {
           <>
             <NameAvatar name={user.name} />
             <button className="auth-btn logout" onClick={handleLogout}>
-              Logout
+            <i class="fa-solid fa-right-from-bracket"></i>
             </button>
           </>
         ) : (

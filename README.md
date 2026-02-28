@@ -47,3 +47,107 @@ It provides real-time chat, video meetings, calendar scheduling, and user authen
 ---
 
 ## 📂 Project Structure
+```
+Frontend
+├── public
+│   └── vite.svg
+├── src
+│   ├── Animation
+│   ├── assets
+│   │   └── react.svg
+│   ├── components
+│   │   ├── Calendar
+│   │   │   ├── Calendar.jsx
+│   │   │   └── TeamsCalendar.css
+│   │   ├── Chats
+│   │   │   ├── miscellaneous
+│   │   │   │   ├── ChatHistory.css
+│   │   │   │   ├── ChatHistory.jsx
+│   │   │   │   ├── ChatOptions.css
+│   │   │   │   ├── ChatOptions.jsx
+│   │   │   │   ├── ChatPreview.css
+│   │   │   │   ├── ChatPreview.jsx
+│   │   │   │   ├── MessageBar.css
+│   │   │   │   └── MessageBar.jsx
+│   │   │   ├── Chat.css
+│   │   │   ├── ChatWindow.jsx
+│   │   │   └── MyChats.jsx
+│   │   ├── Meet
+│   │   │   ├── Meet.css
+│   │   │   ├── MeetLinks.jsx
+│   │   │   ├── MeetingLinks.jsx
+│   │   │   ├── NewMeeting.jsx
+│   │   │   └── ScheduledMeetings.jsx
+│   │   ├── NavBar
+│   │   │   ├── NavBar.css
+│   │   │   ├── NavBar.jsx
+│   │   │   ├── SearchBox.jsx
+│   │   │   └── UserList.jsx
+│   │   ├── SideBar
+│   │   │   ├── SideBar.css
+│   │   │   └── SideBar.jsx
+│   │   ├── authentication
+│   │   │   ├── PrivateRoute.jsx
+│   │   │   ├── SignUp.jsx
+│   │   │   └── login.jsx
+│   │   ├── common
+│   │   │   ├── AppLoader.css
+│   │   │   └── AppLoader.jsx
+│   │   ├── Avatar.jsx
+│   │   ├── ErrorBoundary.jsx
+│   │   ├── MeetSideCard.jsx
+│   │   ├── MeetSideCard2.jsx
+│   │   └── VideoCall.jsx
+│   ├── config
+│   │   ├── api.js
+│   │   └── chatLogic.js
+│   ├── context
+│   │   ├── ChatProvider.jsx
+│   │   └── MeetingContext.jsx
+│   ├── hooks
+│   ├── pages
+│   │   ├── Chats.jsx
+│   │   ├── Dashboard.css
+│   │   ├── Dashboard.jsx
+│   │   ├── Home.css
+│   │   ├── Home.jsx
+│   │   └── Meet.jsx
+│   ├── services
+│   ├── App.css
+│   ├── App.jsx
+│   ├── index.css
+│   ├── main.jsx
+│   └── socket.js
+├── .env.example
+├── .gitignore
+├── eslint.config.js
+├── index.html
+├── package-lock.json
+├── package.json
+└── vite.config.js
+```
+
+```
+Server
+├── Schemas
+│   ├── chatModel.js
+│   ├── messageModel.js
+│   └── userModel.js
+├── config
+│   ├── db.js
+│   └── generateToken.js
+├── controllers
+│   ├── chatControllers.js
+│   ├── messageControllers.js
+│   └── userControllers.js
+├── middlewares
+│   ├── authMiddleware.js
+│   └── errorMiddlewares.js
+├── routes
+│   ├── chatRoutes.js
+│   ├── messageRoutes.js
+│   └── userRoutes.js
+├── index.js
+├── package-lock.json
+└── package.json
+```

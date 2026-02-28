@@ -20,6 +20,28 @@
   flex-shrink: 0;
 }
 
+/* Tablet */
+@media (max-width: 1024px) {
+  .meet {
+    height: calc(100vh - 80px);
+    width: calc(100% - 1rem);
+    margin: 0.5rem;
+    justify-content: flex-start;
+    padding: 1rem;
+  }
+}
+
+/* Mobile */
+@media (max-width: 768px) {
+  .meet {
+    height: calc(100vh - 60px);
+    width: 100%;
+    margin: 0;
+    padding: 0.5rem;
+    justify-content: flex-start;
+  }
+}
+
 .meet-links {
   display: flex;
   justify-content: space-between;
@@ -31,11 +53,42 @@
   gap: clamp(0.5rem, 1.3vw, 2rem);
 }
 
+@media (max-width: 1024px) {
+  .meet-links {
+    width: 100%;
+    justify-content: flex-start;
+  }
+}
+
+@media (max-width: 768px) {
+  .meet-links {
+    width: 100%;
+    gap: 0.5rem;
+  }
+}
+
 .meet-box {
   width: 70%;
   height: 40%;
   margin-bottom: 1.5rem;
   padding: 1rem;
+}
+
+@media (max-width: 1024px) {
+  .meet-box {
+    width: 100%;
+    height: auto;
+    min-height: 300px;
+  }
+}
+
+@media (max-width: 768px) {
+  .meet-box {
+    width: 100%;
+    height: auto;
+    min-height: 250px;
+    padding: 0.5rem;
+  }
 }
 
 .link-btn {
@@ -46,6 +99,14 @@
   font-size: clamp(.7rem, 1.3vw, 2rem);
   padding: 7px 16px;
   text-align: left;
+  min-height: 44px;
+}
+
+@media (max-width: 768px) {
+  .link-btn {
+    width: 100%;
+    min-height: 50px;
+  }
 }
 
 .meet-card {
@@ -68,16 +129,27 @@
   display: flex;
   flex-direction: column;
   justify-content: center;
-  position: absolute;
+  position: relative;
   background-color: #292929;
   height: 15rem;
   width: 20rem;
   padding:0rem 1rem 0rem 1rem ;
   border-radius: .3rem;
-  right: 10rem;
-  top: 8.5rem;
+  /* right: 10rem;
+  top: 8.5rem; */
   box-shadow:2px 2px 10px black ;
   z-index: 1;
+}
+
+/* Hide on tablet */
+@media (max-width: 1024px) {
+  .meet-sideCard {
+    position: static;
+    width: 100%;
+    height: auto;
+    margin-top: 1rem;
+    background-color: #2b2b2b;
+  }
 }
 
 .meet-sideCard>div>form>input{
